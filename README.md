@@ -7,16 +7,16 @@ _____
 ### Downloading to Android Studio
 To use the app, you can clone it from this GitHub repository as a zip file, extract the contents of the file, and open it as a project in Android Studio. Once you have done so, it can be run on your Android device.
 ### Making the Azure Account
-In order to run the face dectection and analysis, you must get an API Subscription Key from the Azure Portal. [This page](https://azure.microsoft.com/en-us/services/cognitive-services/face/) by Microsoft provides the features and capabilities of the Face API. **You can create a free Azure account that doesn't expire at [this link here] by clicking on the "Get API Key" button and choosing the option to create an Azure account(https://azure.microsoft.com/en-us/try/cognitive-services/?api=face-api)**. 
+In order to run the face dectection and analysis, you must get an API Subscription Key from the Azure Portal. [This page](https://azure.microsoft.com/en-us/services/cognitive-services/face/) by Microsoft provides the features and capabilities of the Face API. **You can create a free Azure account that doesn't expire at [this link here](https://azure.microsoft.com/en-us/try/cognitive-services/?api=face-api) by clicking on the "Get API Key" button and choosing the option to create an Azure account**. 
 ### Getting the Face API Key from Azure Portal
 Once you have created your account, head to the [Azure Portal](https://portal.azure.com/#home). Follow these steps:
-1. Click on "Create a resource" on the left side of the portal.
-2. Underneath "Azure Marketplace", click on the "AI + Machine Learning" section. 
-3. Now, under "Featured" you should see "Face". Click on that.
-4. You should now be at [this page](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace). Fill in the required information and press "Create" when done.
-5. Now, click on "All resources" on the left hand side of the Portal.
-6. Click on the name you gave the API.
-7. Underneath "Resource Management", click on "Keys".
+1. Click on **"Create a resource"** on the left side of the portal.
+2. Underneath **"Azure Marketplace"**, click on the **"AI + Machine Learning"** section. 
+3. Now, under **"Featured"** you should see **"Face"**. Click on that.
+4. You should now be at [this page](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace). **Fill in the required information and press "Create" when done**.
+5. Now, click on **"All resources"** on the left hand side of the Portal.
+6. Click on the **name you gave the API**.
+7. Underneath **"Resource Management"**, click on **"Keys"**.
 You should now be able to see two different subscription keys that you can use. Follow the additional instructions to see how to use the API Key in the app
 ### Using the API Key in the app
 Head over to the [MainActivity page](https://github.com/ishaanjav/Face_Analyzer/blob/master/app/src/main/java/com/example/anany/emotionrecognition/MainActivity.java) since that is where the API Key will be used when creating the `FaceServiceClient` object. Where it says, 'faceServiceClient = new FaceServiceRestClient("<YOUR ENDPOINT HERE>", "<YOUR API SUBSCRIPTION KEY>");', replace '<YOUR API SUBSCRIPTION KEY>' with one of your 2 keys from the Azure Portal. *(If you haven't gotten your API Key yet, read the previous two sections above)*. `<YOUR ENDPOINT HERE>` should be replaced with one of the following examples from [this API Documentation link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236). The format should be similar to: `"https://<LOCATION>/face/v1.0"` where `<LOCATION>` should be replaced with something like `uksouth.api.cognitive.microsoft.com` or `japaneast.api.cognitive.microsoft.com`. All of these can be found, listed at [this link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
