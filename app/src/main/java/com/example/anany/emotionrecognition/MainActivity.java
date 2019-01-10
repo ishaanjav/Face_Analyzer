@@ -53,12 +53,7 @@ public class MainActivity extends AppCompatActivity {
         faceServiceClient = new FaceServiceRestClient("<YOUR ENDPOINT HERE>", "<YOUR API SUBSCRIPTION KEY>");
 
         takePicture = findViewById(R.id.takePic);
-        //  mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test3);
         imageView = findViewById(R.id.imageView);
-
-       /* ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);*/
-
 
         process = findViewById(R.id.processClick);
         takePicture.setOnClickListener(new View.OnClickListener() {
@@ -188,23 +183,4 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
     }
 
-
-
-
-   /* @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == TAKE_PICTURE_CODE) {
-            Uri selectedImageURI = data.getData();
-            InputStream in = null;
-            try {
-                in = getContentResolver().openInputStream(selectedImageURI);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            mBitmap = BitmapFactory.decodeStream(in);
-            imageView.setImageBitmap(mBitmap);
-        }
-
-
-    }*/
 }
