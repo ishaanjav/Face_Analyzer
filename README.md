@@ -1,11 +1,11 @@
 # Face_Analyzer
-**The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also for each face provide information such as emotions, the estimated age, gender, and more.**
+**The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also for each face it will provide information about facial attributes such as emotions, the estimated age, gender, and more.**
 
 _____
 ## Usage:
 The app is simple enough to use: the first page contains two buttons: one for taking the picture, the other for processing the picture. Hence, the app requires Camera Permission. Once the picture is taken, you can press the "Process" button and the app will use an `AsyncTask` and the Microsoft Face API to detect the faces in an image and get information about facial attributes such as age, headpose, gender, emotions, and more. *(You can customize what data the app detects and analyzes by specifying it in `FaceServiceClient.FaceAttributeType.MY_FACIAL_ATTRIBUTES` which is located in the `doInBackground` method of the `AsyncTask`.)*
   
-Once the image has been processed, it takes you to a second page, where for each person's face it picked up in the image, it generates a thumbnail of the individual, and displays it in a `ListView` alongside the information analyzed from the previous page. Once again, the Microsoft Face API offers a variety of features which can be found at [their site](https://azure.microsoft.com/en-us/services/cognitive-services/face/) and you can choose what `FaceAttributeType` will be analyzed by specifying it in the `AsyncTask`.
+Once the image has been processed, it takes you to a second page, where for each person's face it detected in the image, it generates a thumbnail of the individual, and displays it in a `ListView` alongside the information analyzed from the previous page. Once again, the Microsoft Face API offers a variety of features which can be found at [their site](https://azure.microsoft.com/en-us/services/cognitive-services/face/) and you can choose what `FaceAttributeType` will be analyzed by specifying it in the `AsyncTask`.
 
 _____
 ## Setup:
