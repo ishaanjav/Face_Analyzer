@@ -3,7 +3,7 @@
 
 _____
 ## Using Your Own Face API Key:
-**Please note that this app requires the use of the Microsoft Azure's Face API. Without a key, you will not be able to use the app as it was inteded. The following sections contain the full set of instructions to getting your own API key for free and using it in the app by changing a single line of code.**
+**Please note that this app requires the use of the Microsoft Azure's Face API. Without a key, you will not be able to use the app as it was intended. The following sections contain the full set of instructions to getting your own API key for free and using it in the app by changing a single line of code.**
 ### Downloading to Android Studio
 To use the app, you can clone it from this GitHub repository as a zip file, extract the contents of the file, and open it as a project in Android Studio. Once you have done so, it can be run on your Android device.
 ### Making the Azure Account
