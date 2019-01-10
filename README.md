@@ -3,6 +3,7 @@
 
 _____
 ## Setup:
+
 **Please note that this app requires the use of the Microsoft Azure's Face API. Without a key, you will not be able to use the app as it was intended. The following sections contain the full set of instructions to getting your own API key for free and using it in the app by changing a single line of code.**
 ### Downloading to Android Studio
 To use the app, you can clone it from this GitHub repository as a zip file, extract the contents of the file, and open it as a project in Android Studio. Once you have done so, it can be run on your Android device.
@@ -19,7 +20,15 @@ Once you have created your account, head to the [Azure Portal](https://portal.az
 7. Underneath **"Resource Management"**, click on **"Keys"**.
 You should now be able to see two different subscription keys that you can use. Follow the additional instructions to see how to use the API Key in the app
 ### Using the API Key in the app
-Head over to the [MainActivity page](https://github.com/ishaanjav/Face_Analyzer/blob/master/app/src/main/java/com/example/anany/emotionrecognition/MainActivity.java) in Android Studio since that is where the API Key will be used when creating the `FaceServiceClient` object. Where it says, 'faceServiceClient = new FaceServiceRestClient("<YOUR ENDPOINT HERE>", "<YOUR API SUBSCRIPTION KEY>");', replace '<YOUR API SUBSCRIPTION KEY>' with one of your 2 keys from the Azure Portal. *(If you haven't gotten your API Key yet, read the previous two sections above)*. `<YOUR ENDPOINT HERE>` should be replaced with one of the following examples from [this API Documentation link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236). The format should be similar to: `"https://<LOCATION>/face/v1.0"` where `<LOCATION>` should be replaced with something like `uksouth.api.cognitive.microsoft.com` or `japaneast.api.cognitive.microsoft.com`. All of these can be found, listed at [this link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Head over to the [MainActivity page](https://github.com/ishaanjav/Face_Analyzer/blob/master/app/src/main/java/com/example/anany/emotionrecognition/MainActivity.java) in Android Studio since that is where the API Key will be used when creating the `FaceServiceClient` object. Where it says,
+
+    faceServiceClient = new FaceServiceRestClient("<YOUR ENDPOINT HERE>", "<YOUR API SUBSCRIPTION KEY>"); 
+
+replace '<YOUR API SUBSCRIPTION KEY>' with one of your 2 keys from the Azure Portal. *(If you haven't gotten your API Key yet, read the previous two sections above)*. `<YOUR ENDPOINT HERE>` should be replaced with one of the following examples from [this API Documentation link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236). The format should be similar to: 
+  
+    "https://<LOCATION>/face/v1.0"
+  
+where `<LOCATION>` should be replaced with something like `uksouth.api.cognitive.microsoft.com` or `japaneast.api.cognitive.microsoft.com`. All of these can be found, listed at [this link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 Now that you have the Face API Key, you can use the app as it was inteded. **Please note that if you are using the free, standard plan, you can only make 20 API transactions/calls per minute. Therefore, if that limit is exceeded, you may run into runtime errors.**
 _____
 ## Usage:
@@ -28,5 +37,9 @@ The app is simple enough to use: the first page contains two buttons: one for ta
 Once the image has been processed, it takes you to a second page, where for each person's face it picked up in the image, it generates a thumbnail of the individual, and displays it in a `ListView` alongside the information analyzed from the previous page. Once again, the Microsoft Face API offers a variety of features which can be found at [their site](https://azure.microsoft.com/en-us/services/cognitive-services/face/) and you can choose what `FaceAttributeType` will be analyzed by specifying it in the `AsyncTask`.
 
 ## Future Proofness:
-This repository was posted on January 9th, 2019. Therefore, updates would have been made to the Face API since then. As of the time of posting, the project uses the following `implementation` in `build.gradle`: `implementation 'com.microsoft.projectoxford:face:1.4.3'`. This can be changed for newer versions of the API. 
+This repository was posted on January 9th, 2019. Therefore, updates would have been made to the Face API since then. As of the time of posting, the project uses the following `implementation` in `build.gradle`:
+
+    //This can be changed for newer versions of the API. 
+    implementation 'com.microsoft.projectoxford:face:1.4.3'.
+
 Feel free to make any changes to the app once you have cloned it and if you have any questions or issues, you can contact me at ishaanjav@gmail.com or by raising an issue for this GitHub repository. I hope that you find this app useful and you enjoy using and testing it!
