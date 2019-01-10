@@ -101,14 +101,9 @@ public class CustomAdapter extends BaseAdapter {
             counter++;
             arrayList.add(value);
         }
-//        Toast.makeText(context, rank.toString(), Toast.LENGTH_LONG).show();
 
         smile.setText(rank.get(rank.size()-1) + ": " + 100*arrayList.get(rank.size()-1) + "% " + rank.get(rank.size()-2) + ": " + 100*arrayList.get(rank.size()-2)+"%");
-
-        //  smile.setText("Anger: " + faces[position].faceAttributes.emotion.anger);
-
-
-        //  Bitmap bitmap = ImageHelper.generateThumbnail(orig, faces[position].faceRectangle);
+    
         FaceRectangle faceRectangle = faces[position].faceRectangle;
         Bitmap bitmap = Bitmap.createBitmap(orig, faceRectangle.left, faceRectangle.top, faceRectangle.width, faceRectangle.height);
 
