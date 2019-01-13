@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             protected Face[] doInBackground(InputStream... inputStreams) {
 
                 publishProgress("Detecting...");
+                //This is where you specify the FaceAttributes to detect. You can change this for your own use.
                 FaceServiceClient.FaceAttributeType[] faceAttr = new FaceServiceClient.FaceAttributeType[]{
                         FaceServiceClient.FaceAttributeType.HeadPose,
                         FaceServiceClient.FaceAttributeType.Age,
@@ -119,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                         FaceServiceClient.FaceAttributeType.Emotion,
                         FaceServiceClient.FaceAttributeType.FacialHair
                 };
-
 
                 try {
                     Face[] result = faceServiceClient.detect(inputStreams[0],
@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
                     return null;
                 }
             }
-
 
             @Override
             protected void onPreExecute() {
@@ -167,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("image", byteArray);
                     startActivity(intent);
                 }
-
 
             }
         };
