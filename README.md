@@ -1,6 +1,7 @@
 # Face_Analyzer
 **The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also for each face it will provide information about facial attributes such as emotions, the estimated age, gender, and more.**
 
+![Image of Yaktocat](https://photos.google.com/photo/AF1QipMm1Fv_XXEzapu4XHdXeAy_Wrii1fqg71wxp4SZ)
 _____
 ## Usage:
 The app is simple enough to use: the first page contains two button- one for taking the picture, the other for processing the picture. Hence, the app requires Camera Permission. Once the picture is taken, you can press the "Process" button and the app will use an `AsyncTask` and the Microsoft Face API to detect the faces in an image and get information about facial attributes such as age, headpose, gender, emotions, and more. *(You can customize what data the app detects and analyzes by specifying it in `FaceServiceClient.FaceAttributeType.MY_FACIAL_ATTRIBUTES` which is located in the `doInBackground` method of the `AsyncTask`.)*
