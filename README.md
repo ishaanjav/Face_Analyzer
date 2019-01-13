@@ -4,8 +4,10 @@
 <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Smiling.png" width="200"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/TakingPicture.png" width="220"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Analysis.png" width="220">
 
 _____
-## Usage:
 <img align="left" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Face%20Analyzer%20Demo.gif" width="210" />
+
+## Usage:
+
 The app is simple enough to use: the first page contains two button- one for taking the picture, the other for processing the picture. Hence, the app requires Camera Permission. Once the picture is taken, you can press the "Process" button and the app will use an `AsyncTask` and the Microsoft Face API to detect the faces in an image and get information about facial attributes such as age, headpose, gender, emotions, and more. *(You can customize what data the app detects and analyzes by specifying it in `FaceServiceClient.FaceAttributeType.MY_FACIAL_ATTRIBUTES` which is located in the `doInBackground` method of the `AsyncTask`.)*
 
 
