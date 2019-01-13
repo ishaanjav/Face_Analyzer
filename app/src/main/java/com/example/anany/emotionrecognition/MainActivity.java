@@ -40,7 +40,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Button process, takePicture;
-    ImageView imageView, hidden;
+    ImageView imageView;
 
     private FaceServiceClient faceServiceClient;
     Bitmap mBitmap;
@@ -50,11 +50,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        faceServiceClient = new FaceServiceRestClient("https://centralus.api.cognitive.microsoft.com/face/v1.0", "5c7cfa706f7d4a319277dfee0ad59050");
+        faceServiceClient = new FaceServiceRestClient("<YOUR ENDPOINT HERE>", "<YOUR API SUBSCRIPTION KEY>");
 
         takePicture = findViewById(R.id.takePic);
+        //  mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test3);
         imageView = findViewById(R.id.imageView);
-        hidden = findViewById(R.id.hidden);
+
+       /* ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);*/
 
 
         process = findViewById(R.id.processClick);
@@ -88,9 +91,23 @@ public class MainActivity extends AppCompatActivity {
                 mBitmap = (Bitmap) data.getExtras().get("data");
                 imageView.setImageBitmap(mBitmap);
                 ready = true;
-                hidden.setVisibility(View.INVISIBLE);
             }
         }
+    }
+
+    private Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float) width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
     private void detectandFrame(final Bitmap mBitmap) {
@@ -171,4 +188,23 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
     }
 
+
+
+
+   /* @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == TAKE_PICTURE_CODE) {
+            Uri selectedImageURI = data.getData();
+            InputStream in = null;
+            try {
+                in = getContentResolver().openInputStream(selectedImageURI);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            mBitmap = BitmapFactory.decodeStream(in);
+            imageView.setImageBitmap(mBitmap);
+        }
+
+
+    }*/
 }
