@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        //IMPORTANT!!------------------------------------------------------------------------------
+        //Replace the below tags <> with your own endpoint and API Subscription Key.
+        //For help with this, read the project's README file.
         faceServiceClient = new FaceServiceRestClient("<YOUR ENDPOINT HERE>", "<YOUR API SUBSCRIPTION KEY>");
 
         takePicture = findViewById(R.id.takePic);
