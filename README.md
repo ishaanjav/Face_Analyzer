@@ -1,7 +1,7 @@
 # Face_Analyzer
 **The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also provide information about facial attributes for each face such as emotions, estimated age, gender, and more.**
 
-<img align="left" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/TakingPicture.png" width="250"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Analysis.png" width="250">
+<img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Smiling.png" width="220"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/TakingPicture.png" width="220"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Analysis.png" width="220">
 
 _____
 ## Usage:
