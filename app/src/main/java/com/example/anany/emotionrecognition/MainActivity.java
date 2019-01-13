@@ -40,7 +40,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Button process, takePicture;
-    ImageView imageView;
+    ImageView imageView, hidden;
 
     private FaceServiceClient faceServiceClient;
     Bitmap mBitmap;
@@ -53,12 +53,9 @@ public class MainActivity extends AppCompatActivity {
         faceServiceClient = new FaceServiceRestClient("<YOUR ENDPOINT HERE>", "<YOUR API SUBSCRIPTION KEY>");
 
         takePicture = findViewById(R.id.takePic);
-        //  mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test3);
         imageView = findViewById(R.id.imageView);
-
-       /* ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);*/
-
+        hidden = findViewById(R.id.hidden);
+        imageView.setVisibility(View.INVISIBLE);
 
         process = findViewById(R.id.processClick);
         takePicture.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
         process.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,26 +86,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 100) {
             if (resultCode == RESULT_OK) {
+                imageView.setVisibility(View.VISIBLE);
                 mBitmap = (Bitmap) data.getExtras().get("data");
                 imageView.setImageBitmap(mBitmap);
                 ready = true;
+                hidden.setVisibility(View.INVISIBLE);
             }
         }
-    }
-
-    private Bitmap getResizedBitmap(Bitmap image, int maxSize) {
-        int width = image.getWidth();
-        int height = image.getHeight();
-
-        float bitmapRatio = (float) width / (float) height;
-        if (bitmapRatio > 1) {
-            width = maxSize;
-            height = (int) (width / bitmapRatio);
-        } else {
-            height = maxSize;
-            width = (int) (height * bitmapRatio);
-        }
-        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
     private void detectandFrame(final Bitmap mBitmap) {
@@ -163,22 +148,23 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(Face[] faces) {
-                //   pd.dismiss();
+                pd.dismiss();
                 Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                 Gson gson = new Gson();
                 String data = gson.toJson(faces);
-                if (faces == null) {
-                    makeToast("It is null");
+                if (faces == null || faces.length == 0) {
+                    makeToast("No faces detected. Please retake the picture.");
                 } else {
-                    //      makeToast(data);
-                }
-                intent.putExtra("list_faces", data);
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                mBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
+                    intent.putExtra("list_faces", data);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    mBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] byteArray = stream.toByteArray();
 
-                intent.putExtra("image", byteArray);
-                startActivity(intent);
+                    intent.putExtra("image", byteArray);
+                    startActivity(intent);
+                }
+
+
             }
         };
         detectTask.execute(inputStream);
@@ -187,24 +173,4 @@ public class MainActivity extends AppCompatActivity {
     private void makeToast(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
     }
-
-
-
-
-   /* @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == TAKE_PICTURE_CODE) {
-            Uri selectedImageURI = data.getData();
-            InputStream in = null;
-            try {
-                in = getContentResolver().openInputStream(selectedImageURI);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            mBitmap = BitmapFactory.decodeStream(in);
-            imageView.setImageBitmap(mBitmap);
-        }
-
-
-    }*/
 }

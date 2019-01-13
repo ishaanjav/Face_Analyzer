@@ -101,14 +101,8 @@ public class CustomAdapter extends BaseAdapter {
             counter++;
             arrayList.add(value);
         }
-//        Toast.makeText(context, rank.toString(), Toast.LENGTH_LONG).show();
 
-        smile.setText(rank.get(rank.size()-1) + ": " + 100*arrayList.get(rank.size()-1) + "% " + rank.get(rank.size()-2) + ": " + 100*arrayList.get(rank.size()-2)+"%");
-
-        //  smile.setText("Anger: " + faces[position].faceAttributes.emotion.anger);
-
-
-        //  Bitmap bitmap = ImageHelper.generateThumbnail(orig, faces[position].faceRectangle);
+        smile.setText(rank.get(rank.size() - 1) + ": " + 100 * arrayList.get(rank.size() - 1) + "% " + rank.get(rank.size() - 2) + ": " + 100 * arrayList.get(rank.size() - 2) + "%");
         FaceRectangle faceRectangle = faces[position].faceRectangle;
         Bitmap bitmap = Bitmap.createBitmap(orig, faceRectangle.left, faceRectangle.top, faceRectangle.width, faceRectangle.height);
 
@@ -117,18 +111,4 @@ public class CustomAdapter extends BaseAdapter {
         return view;
     }
 
-    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
-        int width = image.getWidth();
-        int height = image.getHeight();
-
-        float bitmapRatio = (float) width / (float) height;
-        if (bitmapRatio > 1) {
-            width = maxSize;
-            height = (int) (width / bitmapRatio);
-        } else {
-            height = maxSize;
-            width = (int) (height * bitmapRatio);
-        }
-        return Bitmap.createScaledBitmap(image, width, height, true);
-    }
 }
