@@ -38,7 +38,7 @@ Once you have created your account, head to the [Azure Portal](https://portal.az
 7. Underneath **"Resource Management"**, click on **"Keys"**.
 You should now be able to see two different subscription keys that you can use. Follow the additional instructions to see how to use the API Key in the app
 ### Using the API Key in the app
-Head over to the [MainActivity page](https://github.com/ishaanjav/Face_Analyzer/blob/master/app/src/main/java/com/example/anany/emotionrecognition/MainActivity.java) in Android Studio since that is where the API Key will be used when creating the `FaceServiceClient` object. Where it says:
+Head over to the [MainActivity page](https://github.com/ishaanjav/Face_Analyzer/blob/master/app/src/main/java/com/example/anany/emotionrecognition/MainActivity.java) in Android Studio since that is where the API Key will be used when creating the `FaceServiceClient` object. Where it says in `onCreate`:
 
     faceServiceClient = new FaceServiceRestClient("<YOUR ENDPOINT HERE>", "<YOUR API SUBSCRIPTION KEY>"); 
 
