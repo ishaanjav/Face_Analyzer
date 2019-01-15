@@ -1,5 +1,8 @@
 # Face Analyzer
-**The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also provide information about facial attributes for each face such as emotions, estimated age, gender, and more.**
+**The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also provide information about facial attributes for each face such as emotions, estimated age, gender, and more.** Possible applications for this app are at amusement parks, classrooms, and residential homes. 
+1. Amusement parks can use the app to collect data about the type of audiences that rides gather based on age and other attributes in addition to analyzing the emotions of people before and after the ride. 
+2. Furthermore, the app can be used in classrooms for analyzing student's faces when being taught. The teacher can then review the data about emotions to see whether students were able to understand, enjoy, or dislike the lesson. 
+3. Finally, another application of the app is in residential homes where caretakers can regularly use the app to determine patients' emotions and store it in a database for later analyzation.
 
 <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Smiling.png" width="200"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/TakingPicture.png" width="220"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Analysis.png" width="220">
 
