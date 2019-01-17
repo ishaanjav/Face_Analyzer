@@ -61,3 +61,8 @@ This repository was posted on January 9th, 2019. Therefore, updates would have b
     implementation 'com.microsoft.projectoxford:face:1.4.3'.
 
 Feel free to make any changes to the app once you have cloned it and if you have any questions or issues, you can contact me at ishaanjav@gmail.com or by raising an issue for this GitHub repository. I hope that you find this app useful and you enjoy using and testing it!
+
+Furthermore, you may also want to check out some of my other repositories for Android apps:
+
+- [**Kairos Face Recognition**](https://github.com/ishaanjav/Kairos_Face_Recognition): The purpose of this Android app is to use Kairos's SDK for Android in order to implement facial recognition. Features of this app include: registering and identifying users when given an image. [README](https://github.com/ishaanjav/Kairos_Face_Recognition/blob/master/README.md)
+- **[Fingerprint Authentication](https://github.com/ishaanjav/Fingerprint_Authentication)** - A simple app that demonstrates how to use a device's fingerprint reader to authenticate a person's finger and identify it among existing fingerprints. **[README](https://github.com/ishaanjav/Fingerprint_Authentication/blob/master/README.md)**
