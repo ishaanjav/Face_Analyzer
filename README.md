@@ -37,7 +37,11 @@ Once you have created your account, head to the [Azure Portal](https://portal.az
 4. You should now be at [this page](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace). **Fill in the required information and press "Create" when done**.
 5. Now, click on **"All resources"** on the left hand side of the Portal.
 6. Click on the **name you gave the API**.
-7. Underneath **"Resource Management"**, click on **"Keys"**.
+7. Underneath **"Resource Management"**, click on **"Manage Keys"**.
+
+<img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Azure-FaceAPI%20Key.PNG" width="850" />
+
+
 You should now be able to see two different subscription keys that you can use. Follow the additional instructions to see how to use the API Key in the app
 ### Using the API Key in the app
 Head over to the [MainActivity page](https://github.com/ishaanjav/Face_Analyzer/blob/master/app/src/main/java/com/example/anany/emotionrecognition/MainActivity.java) in Android Studio since that is where the API Key will be used when creating the `FaceServiceClient` object. Where it says in `onCreate`:
