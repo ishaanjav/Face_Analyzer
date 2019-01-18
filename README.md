@@ -11,8 +11,7 @@ _____
 
 ## Usage:
 
-The app is simple enough to use: the first page contains two button- one for taking the picture, the other for processing the picture. Hence, the app requires Camera Permission. Once the picture is taken, you can press the "Process" button and the app will use an `AsyncTask` and the Microsoft Face API to detect the faces in an image and get information about facial attributes such as age, headpose, gender, emotions, and more. *(You can customize what data the app detects and analyzes by specifying it in `FaceServiceClient.FaceAttributeType.MY_FACIAL_ATTRIBUTES` which is located in the `doInBackground` method of the `AsyncTask`.)*
-
+The app is simple enough to use: the first page contains two button- one for taking the picture, the other for processing the picture. Hence, the app requires Camera Permission. Once the picture is taken, you can press the "Process" button and the app will use an `AsyncTask` and the Microsoft Face API to detect the faces in an image and get information about facial attributes such as age, headpose, gender, emotions, and more. *(You can customize what data the app detects and analyzes by specifying it in `FaceServiceClient.FaceAttributeType.MY_FACIAL_ATTRIBUTES` which is located in the `doInBackground` method of the `AsyncTask`. For more details, check out the [Detecting Particular Facial Attributes Section](#detecting-particular-facial-attributes))*
 
 
 Once the image has been processed, it takes you to a second page, where for each person's face it detected in the image, it generates a thumbnail of the individual, and displays it in a `ListView` alongside the information analyzed from the previous page. Once again, the Microsoft Face API offers a variety of features which can be found at [their site](https://azure.microsoft.com/en-us/services/cognitive-services/face/) and you can choose what `FaceAttributeType` will be analyzed by specifying it in the `AsyncTask`.
@@ -52,6 +51,32 @@ replace `<YOUR API SUBSCRIPTION KEY>` with one of your 2 keys from the Azure Por
 where `<LOCATION>` should be replaced with something like `uksouth.api.cognitive.microsoft.com` or `japaneast.api.cognitive.microsoft.com`. All of these can be found, listed at [this link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 Now that you have the Face API Key, you can use the app as it was inteded. **Please note that if you are using the free, standard plan, you can only make 20 API transactions/calls per minute. Therefore, if that limit is exceeded, you may run into runtime errors.**
+### Detecting Particular Facial Attributes
+The face analysis happens in the `detectandFrame` method of [`MainActivity.java`](https://github.com/ishaanjav/Face_Analyzer/blob/master/app/src/main/java/com/example/anany/emotionrecognition/MainActivity.java). More specifically, `detectandFrame` -> `AsyncTask` -> `doInBackground`. This is what the code looks like for detecting head position, age, gender, emotion, and facial hair:
+    
+    FaceServiceClient.FaceAttributeType[] faceAttr = new FaceServiceClient.FaceAttributeType[]{
+         FaceServiceClient.FaceAttributeType.HeadPose,
+         FaceServiceClient.FaceAttributeType.Age,
+         FaceServiceClient.FaceAttributeType.Gender,
+         FaceServiceClient.FaceAttributeType.Emotion,
+         FaceServiceClient.FaceAttributeType.FacialHair
+    };
+You can change it to something like `FaceServiceClient.FaceAttributeType.hairColor`. For more of the `FaceAttributeTypes`, you can check out one of the JSON files from the [Face API page](https://azure.microsoft.com/en-us/services/cognitive-services/face/). 
+
+Now that you have detected the face attributes, you will have to change the `CustomAdapter.java` in order to display the results from the detection process. In the `getView` method, to get the facial attributes of a face, the code uses `faces[position]` to get an element in the array of type `Face`. Then, you can use `faces[position].faceAttributes .faceAttribute` to get information about a particular attribute. The code is below:
+
+    //Getting the Gender:
+    faces[position].faceAttributes.gender
+    
+    //Getting facial hair information:
+    //Probability of having a beard:
+    faces[position].faceAttributes.facialHair.beard
+    //Probability of having sideburns:
+    faces[position].faceAttributes.facialHair.sideburns
+    //Probability of having a moustache:
+    faces[position].faceAttributes.facialHair.moustache
+    
+##### Please note that if you do not specify a certain face attribute to be detected, then doing `faces[position].faceAttributes.thatFacialAttribute` in the `getView` method will give you errors. Additionally, certain attributes, like Head Position and Facial Hair, have attributes within themselves such as `faces[position].faceAttributes.facialHair.moustache` which can end in `moustache, sideburns, beard` or `faces[position].faceAttributes.headPose.yaw` which can end in `yaw, roll, pitch`. 
 _____
 
 ## Future Proofness:
