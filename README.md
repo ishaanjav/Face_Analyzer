@@ -1,8 +1,8 @@
 # Face Analyzer
 **The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also provide information about facial attributes for each face such as emotions, estimated age, gender, and more.** Possible applications for this app are at amusement parks, classrooms, and residential homes. 
-1. Amusement parks can use the app to collect data about the type of audiences that rides gather based on age and other attributes in addition to analyzing the emotions of people before and after the ride. 
-2. Furthermore, the app can be used in classrooms for analyzing student's faces when being taught. The teacher can then review the data about emotions to see whether students were able to understand, enjoy, or dislike the lesson. 
-3. Finally, another application of the app is in residential homes where caretakers can regularly use the app to determine patients' emotions and store it in a database for later analyzation.
+1. **Amusement parks** can use the app to collect data about the type of audiences that rides gather based on age and other attributes in addition to analyzing the emotions of people before and after the ride. 
+2. Furthermore, the app can be used in **classrooms** for analyzing student's faces when being taught. The teacher can then review the data about emotions to see whether students were able to understand, enjoy, or dislike the lesson. 
+3. Finally, another application of the app is in **residential homes** where caretakers can regularly use the app to determine patients' emotions and store it in a database for later analyzation.
 
 <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Smiling.png" width="200"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/TakingPicture.png" width="220"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Analysis.png" width="220">
 
@@ -24,7 +24,7 @@ Once the image has been processed, it takes you to a second page, where for each
 _____
 ## Setup:
 
-**Please note that this app requires the use of the Microsoft Azure's Face API. Without a key, you will not be able to use the app as it was intended. The following sections contain the full set of instructions to getting your own API key for free and using it in the app by changing a single line of code.**
+**Please note that this app requires the use of Microsoft Azure's Face API. Without an API Key, you will not be able to use the app as it was intended. The following sections contain the full set of instructions to getting your own API key for free and using it in the app by changing a single line of code.**
 ### Downloading to Android Studio
 To use the app, you can clone it from this GitHub repository as a zip file, extract the contents of the file, and open it as a project in Android Studio. Once you have done so, it can be run on your Android device.
 ### Making the Azure Account
@@ -41,6 +41,7 @@ Once you have created your account, head to the [Azure Portal](https://portal.az
 
 <p align="center">
   <img width="900" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Azure-FaceAPI%20Key.PNG">
+  <td>Hi</td>
 </p>
 
 You should now be able to see two different subscription keys that you can use. Follow the additional instructions to see how to use the API Key in the app
@@ -55,7 +56,7 @@ replace `<YOUR API SUBSCRIPTION KEY>` with one of your 2 keys from the Azure Por
   
 where `<LOCATION>` should be replaced with something like `uksouth.api.cognitive.microsoft.com` or `japaneast.api.cognitive.microsoft.com`. All of these can be found, listed at [this link](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-Now that you have the Face API Key, you can use the app as it was inteded. **Please note that if you are using the free, standard plan, you can only make 20 API transactions/calls per minute. Therefore, if that limit is exceeded, you may run into runtime errors.**
+Now that you have the Face API Key, you can use the app as it was intended. **Please note that if you are using the free, standard plan, you can only make 20 API transactions/calls per minute. Therefore, if that limit is exceeded, you may run into runtime errors.**
 ### Detecting Particular Facial Attributes
 The face analysis happens in the `detectandFrame` method of [`MainActivity.java`](https://github.com/ishaanjav/Face_Analyzer/blob/master/app/src/main/java/com/example/anany/emotionrecognition/MainActivity.java). More specifically, `detectandFrame` -> `AsyncTask` -> `doInBackground`. This is what the code looks like for detecting head position, age, gender, emotion, and facial hair:
     
