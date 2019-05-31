@@ -43,6 +43,11 @@ Upon installation, the app asks for camera permission and permission to access p
 
 However, the app will not be able to serve its purpose if neither one of the permissions are granted.
 
+## Disclaimer
+**Please keep in mind that the app is not 100% accurate.** Therefore, it may not be able to accurately determine your age or gender every time it is used.
+
+For more information on how the app determines your facial attributes, you can check out the [Microsoft Face API.](https://azure.microsoft.com/en-us/services/cognitive-services/face/) which the app uses to determine the facial attributes.
+
 ## Your Privacy Rights
 You have the ability to revoke the app’s camera permission from your device’s Settings. Once this done, the app will not have accees to the camera or photo gallery. 
 
