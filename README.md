@@ -22,7 +22,6 @@ Once the image has been processed, it takes you to a second page, where for each
 
 
 <br><br>
-<br><br>
 
 _____
 ## Setup:
