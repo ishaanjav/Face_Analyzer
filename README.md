@@ -9,7 +9,8 @@
 <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Smiling.png" width="200"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/TakingPicture.png" width="220"> <img align="center" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Analysis.png" width="220">
 
 _____
-<img align="right" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/Face%20Analyzer%20Demo.gif" width="250" />
+
+<img align="right" src="https://github.com/ishaanjav/Weka-ML-Face-Recognition/blob/master/Using%20the%20App%20Gif.gif" width="250" />
 
 ## Usage:
 
