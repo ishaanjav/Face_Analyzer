@@ -1,5 +1,5 @@
 # Face Analyzer
-### [***Link to app on Play Store***](https://play.google.com/store/apps/details?id=app.anany.faceanalyzer)
+### [***Link to app on Google Play Store***](https://play.google.com/store/apps/details?id=app.anany.faceanalyzer)
 
 **The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also provide information about facial attributes for each face such as emotions, estimated age, gender, and more.** Possible applications for this app are at amusement parks, classrooms, and residential homes. 
 1. **Amusement parks** can use the app to collect data about the type of audiences that rides gather based on age and other attributes in addition to analyzing the emotions of people before and after the ride. 
@@ -88,6 +88,9 @@ Now that you have detected the face attributes, you will have to change the `Cus
 _____
 
 ## Future Proofness:
+
+### [***Link to app on Google Play Store***](https://play.google.com/store/apps/details?id=app.anany.faceanalyzer)
+
 This repository was posted on January 9th, 2019. Therefore, updates would have been made to the Face API since then. As of the time of posting, the project uses the following `implementation` in `build.gradle`:
 
     //This can be changed for newer versions of the API. 
