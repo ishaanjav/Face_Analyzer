@@ -6,20 +6,27 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.CircularProgressDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -45,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private FaceServiceClient faceServiceClient;
     Bitmap mBitmap;
     Boolean ready = false;
+    CoordinatorLayout rel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,35 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        rel = findViewById(R.id.rel);
+        final Snackbar snackBar = Snackbar.make(rel, "This is an old version of the app. The new version is available on the Play Store.", 10500);
+
+        snackBar.setAction("Show", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Call your action method here
+                snackBar.dismiss();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=app.anany.faceanalyzer"));
+                startActivity(browserIntent);
+            }
+        });
+        snackBar.setActionTextColor(Color.parseColor("#a1e6ff"));
+        snackBar.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        makeToast("Improved Face Analyzer app on the Play Store");
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=app.anany.faceanalyzer"));
+        startActivity(browserIntent);
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
