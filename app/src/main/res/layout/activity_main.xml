@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/rel"
         android:layout_width="match_parent"
@@ -35,7 +34,6 @@
         </RelativeLayout>
     </android.support.design.widget.CoordinatorLayout>
 
-
     <Button
         android:id="@+id/takePic"
         android:layout_width="200dp"
@@ -51,6 +49,5 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:text="Process" />
-
 
 </RelativeLayout>
