@@ -6,34 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/rel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:layout_marginTop="3sp"
+        android:layout_above="@id/takePic">
 
-    <ImageView
-        android:id="@+id/hidden"
-        android:layout_width="280sp"
-        android:layout_height="280sp"
-        android:layout_centerInParent="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/smiling" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/hidden"
+                android:layout_width="280sp"
+                android:layout_height="280sp"
+                android:layout_marginBottom="200sp"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/smiling" />
+        </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
 
     <Button
         android:id="@+id/takePic"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
         android:text="Take Picture" />
 
     <Button
         android:id="@+id/processClick"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:text="Process" />
 
 
