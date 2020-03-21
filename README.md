@@ -96,7 +96,7 @@ This repository was posted on January 9th, 2019. Therefore, updates would have b
     //This can be changed for newer versions of the API. 
     implementation 'com.microsoft.projectoxford:face:1.4.3'.
 
-Feel free to make any changes to the app once you have cloned it and if you have any questions or issues, you can contact me at ishaanjav@gmail.com or by raising an issue for this GitHub repository. I hope that you find this app useful and you enjoy using and testing it!
+Feel free to make any changes to the app once you have cloned it and if you have any questions or issues, you can contact me at ijapps101@gmail.com or by raising an issue for this GitHub repository. I hope that you find this app useful and you enjoy using and testing it!
 
 Furthermore, you may also want to check out some of my other repositories for Android apps:
 
