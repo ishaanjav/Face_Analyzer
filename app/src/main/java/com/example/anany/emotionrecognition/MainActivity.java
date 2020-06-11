@@ -2,11 +2,15 @@ package com.example.anany.emotionrecognition;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Looper;
@@ -27,6 +31,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -54,11 +59,13 @@ public class MainActivity extends AppCompatActivity {
     Boolean ready = false;
     CoordinatorLayout rel;
 
+    int counter = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         //IMPORTANT!!------------------------------------------------------------------------------
         //Replace the below tags <> with your own endpoint and API Subscription Key.
         //For help with this, read the project's README file.
@@ -76,8 +83,31 @@ public class MainActivity extends AppCompatActivity {
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
                 } else {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent, 100);
+                    //IMPORTANT: You may notice that the pictures from the camera are low quality.
+                    //TO FIX THIS: You need to request permission to write external storage that way you can access the full-quality image
+                    //from the device, rather than a low quality thumbnail.
+                    if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                            == PackageManager.PERMISSION_GRANTED) {
+                        values = new ContentValues();
+                        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+                        values.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+                        imageUri = getContentResolver().insert(
+                                MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                        startActivityForResult(intent, 100);
+                    } else {
+                        if (counter == 2 || (counter > 2 && counter % 2 == 0)) {
+                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                                  startActivityForResult(intent, 1);
+                        } else                         //Requesting storage permissions so we can get a high quality image.
+                            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+                        counter++;
+                        //Comment out the else statement above if you don't want to keep getting asked for Storage permission (assuming you deny it every time)
+                        //OLD Code below
+//                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        //                      startActivityForResult(intent, 100);
+                    }
                 }
             }
         });
@@ -94,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
         });
         rel = findViewById(R.id.rel);
         final Snackbar snackBar = Snackbar.make(rel, "This is an old version of the app. The new version is available on the Play Store.", 10500);
-
+        TextView tv = (TextView) snackBar.getView().findViewById(android.support.design.R.id.snackbar_text);
+        tv.setMaxLines(4);
         snackBar.setAction("Show", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +139,77 @@ public class MainActivity extends AppCompatActivity {
         snackBar.show();
     }
 
+    Uri imageUri;
+    ContentValues values;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 100) { //High Quality picture using URI and storage
+            if (resultCode == RESULT_OK) {
+                imageView.setVisibility(View.VISIBLE);
+                try {
+                    mBitmap = MediaStore.Images.Media.getBitmap(
+                            getContentResolver(), imageUri);
+
+                    Bitmap rotatedBitmap = mBitmap;
+                    ExifInterface ei = new ExifInterface(getRealPathFromURI(imageUri));
+                    int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                            ExifInterface.ORIENTATION_UNDEFINED);
+
+                    switch (orientation) {
+
+                        case ExifInterface.ORIENTATION_ROTATE_90:
+                            rotatedBitmap = rotateImage(mBitmap, 90);
+                            break;
+
+                        case ExifInterface.ORIENTATION_ROTATE_180:
+                            rotatedBitmap = rotateImage(mBitmap, 180);
+                            break;
+
+                        case ExifInterface.ORIENTATION_ROTATE_270:
+                            rotatedBitmap = rotateImage(mBitmap, 270);
+                            break;
+
+                        case ExifInterface.ORIENTATION_NORMAL:
+                        default:
+                            rotatedBitmap = mBitmap;
+                    }
+                    imageView.setImageBitmap(rotatedBitmap);
+
+                } catch (IOException e) {
+                    //Error getting high quality image --> Use low quality thumbnail.
+                    makeToast("Error: " + e.toString());
+                    //mBitmap = (Bitmap) data.getExtras().get("data");
+                    e.printStackTrace();
+                    imageView.setImageBitmap(mBitmap);
+                }
+                ready = true;
+                hidden.setVisibility(View.INVISIBLE);
+            }
+        }else if(requestCode == 1 && resultCode == RESULT_OK){
+            //Low Quality image
+            imageView.setVisibility(View.VISIBLE);
+            mBitmap = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(mBitmap);
+            ready = true;
+            hidden.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(idx);
+    }
+
+    public static Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
+                matrix, true);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -117,27 +219,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        makeToast("Improved Face Analyzer app on the Play Store");
+        makeToast("Latest, improved Face Analyzer app on the Play Store");
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=app.anany.faceanalyzer"));
         startActivity(browserIntent);
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 100) {
-            if (resultCode == RESULT_OK) {
-                imageView.setVisibility(View.VISIBLE);
-                mBitmap = (Bitmap) data.getExtras().get("data");
-                imageView.setImageBitmap(mBitmap);
-                ready = true;
-                hidden.setVisibility(View.INVISIBLE);
-            }
-        }
-    }
-
     private void detectandFrame(final Bitmap mBitmap) {
-
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
         final ByteArrayInputStream inputStream = new ByteArrayInputStream((outputStream.toByteArray()));
@@ -193,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 String data = gson.toJson(faces);
                 if (faces == null || faces.length == 0) {
-                    makeToast("No faces detected. Please retake the picture.");
+                    makeToast("No faces detected. You may not have added the API Key or try retaking the picture.");
                 } else {
                     intent.putExtra("list_faces", data);
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
