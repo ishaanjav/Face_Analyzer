@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
     Bitmap mBitmap;
     Boolean ready = false;
     CoordinatorLayout rel;
-
     int counter = 0;
 
     @Override
