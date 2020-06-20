@@ -1,4 +1,4 @@
-[<img  width="95" alt="Click me for Video Demonstration" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/IJ%20Apps.png" align="right"/>](https://www.youtube.com/channel/UCLQUpH7SdkAXAeK6jeeF8zg)
+[<img  width="70" alt="Click me for Video Demonstration" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/IJ%20Apps.png" align="right"/>](https://www.youtube.com/channel/UCLQUpH7SdkAXAeK6jeeF8zg)
 
 # Face Analyzer
 ### [***Link to updated, improved app on Google Play Store***](https://play.google.com/store/apps/details?id=app.anany.faceanalyzer)
