@@ -91,7 +91,7 @@ Now that you have detected the face attributes, you will have to change the `Cus
 ##### Please note that if you do not specify a certain face attribute to be detected, then doing `faces[position].faceAttributes.thatFacialAttribute` in the `getView` method will give you errors. Additionally, certain attributes, like Head Position and Facial Hair, have attributes within themselves such as `faces[position].faceAttributes.facialHair.moustache` which can end in `moustache, sideburns, beard` or `faces[position].faceAttributes.headPose.yaw` which can end in `yaw, roll, pitch`. 
 _____
 ## [IJ Apps YouTube Channel](https://www.youtube.com/channel/UCLQUpH7SdkAXAeK6jeeF8zg)
-If you found this tutorial useful, you may benefit from checking out my YouTube Channel for learning Android app development. 
+If you found this repository useful, you may benefit from checking out my YouTube Channel for learning Android app development. 
 It is called [**IJ Apps**](https://www.youtube.com/channel/UCLQUpH7SdkAXAeK6jeeF8zg) and has over 50+ tutorials (as of June 20th) starting at the basics and then covering more advanced topics.
 
 There is also a [**video demonstration of Face Analyzer**](https://youtu.be/wjYyZwTlWEQ) on my channel if you would like to see how it works & how to use it.
