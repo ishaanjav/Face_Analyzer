@@ -1,5 +1,8 @@
+[<img width="180" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/IJ%20Apps.png" align="right"/>](https://www.youtube.com/channel/UCLQUpH7SdkAXAeK6jeeF8zg)
+
 # Face Analyzer
-### [***Link to updated app on Google Play Store***](https://play.google.com/store/apps/details?id=app.anany.faceanalyzer)
+### [***Link to updated, improved app on Google Play Store***](https://play.google.com/store/apps/details?id=app.anany.faceanalyzer)
+### Learn to make apps like this with the [IJ Apps YouTube Channel!](https://www.youtube.com/channel/UCLQUpH7SdkAXAeK6jeeF8zg)
 
 **The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also provide information about facial attributes for each face such as emotions, estimated age, gender, and more.** Possible applications for this app are at amusement parks, classrooms, and residential homes. 
 1. **Amusement parks** can use the app to collect data about the type of audiences that rides gather based on age and other attributes in addition to analyzing the emotions of people before and after the ride. 
