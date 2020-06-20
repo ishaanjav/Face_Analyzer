@@ -17,6 +17,8 @@ _____
 
 ## Usage:
 
+### [Video Demonstration](https://youtu.be/wjYyZwTlWEQ)
+
 The app is simple enough to use: the first page contains two button- one for taking the picture, the other for processing the picture. Hence, the app requires Camera Permission. Once the picture is taken, you can press the "Process" button and the app will use an `AsyncTask` and the Microsoft Face API to detect the faces in an image and get information about facial attributes such as age, headpose, gender, emotions, and more. *(You can customize what data the app detects and analyzes by specifying it in `FaceServiceClient.FaceAttributeType.MY_FACIAL_ATTRIBUTES` which is located in the `doInBackground` method of the `AsyncTask`. For more details, check out the [Detecting Particular Facial Attributes Section](#detecting-particular-facial-attributes))*
 
 
