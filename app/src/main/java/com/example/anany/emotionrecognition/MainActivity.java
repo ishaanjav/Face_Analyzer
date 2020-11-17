@@ -1,3 +1,8 @@
+/*
+    Code written by ishaanjav
+    github.com/ishaanjav
+    App on Google Play Store: https://play.google.com/store/apps/details?id=app.anany.faceanalyzer
+*/
 package com.example.anany.emotionrecognition;
 
 import android.Manifest;
