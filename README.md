@@ -4,7 +4,7 @@
 
 # Face Analyzer
 ### [***Link to updated, improved app on Google Play Store***](https://play.google.com/store/apps/details?id=app.anany.faceanalyzer) 
-
+ 
 **The purpose of this Android app is to use the Microsoft Face API to not only detect individual faces in an image, but also provide information about facial attributes for each face such as emotions, estimated age, gender, and more.** Possible applications for this app are at amusement parks, classrooms, and residential homes. 
 1. **Amusement parks** can use the app to collect data about the type of audiences that rides gather based on age and other attributes in addition to analyzing the emotions of people before and after the ride. 
 2. Furthermore, the app can be used in **classrooms** for analyzing student's faces when being taught. The teacher can then review the data about emotions to see whether students were able to understand, enjoy, or dislike the lesson. 
@@ -113,4 +113,5 @@ Feel free to make any changes to the app once you have cloned it and if you have
 Furthermore, you may also want to check out some of my other repositories for Android apps:
 
 - [**Kairos Face Recognition**](https://github.com/ishaanjav/Kairos_Face_Recognition): The purpose of this Android app is to use Kairos's SDK for Android in order to implement facial recognition. Features of this app include: registering and identifying users when given an image. [README](https://github.com/ishaanjav/Kairos_Face_Recognition/blob/master/README.md)
+- [**GitHub Automated File Uploader**](https://github.com/ishaanjav/GitHub-Automated-File-Uploader): A command-line automation tool to upload files to GitHub, regardless of whether the files are in a git repository. Runs with a single command.
 - **[Fingerprint Authentication](https://github.com/ishaanjav/Fingerprint_Authentication)** - A simple app that demonstrates how to use a device's fingerprint reader to authenticate a person's finger and identify it among existing fingerprints. **[README](https://github.com/ishaanjav/Fingerprint_Authentication/blob/master/README.md)**
