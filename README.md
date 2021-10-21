@@ -1,4 +1,4 @@
-[<img  width="128" alt="Donate to paypal.me/IJApps" src="https://img.shields.io/badge/Donate-PayPal-green.svg"/>](https://www.paypal.com/paypalme/ijapps)
+<!-- [<img  width="128" alt="Donate to paypal.me/IJApps" src="https://img.shields.io/badge/Donate-PayPal-green.svg"/>](https://www.paypal.com/paypalme/ijapps) -->
 
 [<img  width="70" alt="Click me for Video Demonstration" src="https://github.com/ishaanjav/Face_Analyzer/blob/master/IJ%20Apps.png" align="right"/>](https://www.youtube.com/ijapps)
 
